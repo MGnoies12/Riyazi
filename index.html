@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجموعه‌ها | ریاضیات پایه نهم</title>
+    
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- CSS File -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Animated Particle Background -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Header -->
+    <header class="glass-header">
+        <div class="logo">
+            <i class="material-icons animated-icon">functions</i>
+            <span>ریاضی نهم</span>
+        </div>
+        <nav class="nav-menu" id="navMenu">
+            <a href="#home" class="nav-link">خانه</a>
+            <a href="#definition" class="nav-link">تعریف مجموعه</a>
+            <a href="#types" class="nav-link">انواع مجموعه</a>
+            <a href="#venn-diagram" class="nav-link">نمودار ون</a>
+            <a href="#exercise" class="nav-link">تمرین</a>
+        </nav>
+        <div class="hamburger" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="hero-section animate-on-scroll">
+            <h1 class="glow-text animate-heading">جهان مجموعه‌ها را کشف کن!</h1>
+            <p>به وب‌سایت آموزشی و تعاملی "مجموعه‌ها" خوش آمدی. در اینجا به زبانی ساده و گرافیکی با این مفهوم پایه‌ای ریاضی آشنا می‌شویم.</p>
+            <a href="#definition" class="cta-button">شروع کن</a>
+        </section>
+
+        <!-- Definition Section -->
+        <section id="definition" class="content-section animate-on-scroll">
+            <h2 class="animate-heading">مجموعه چیست؟</h2>
+            <div class="card glass-card">
+                <div class="card-icon">
+                    <i class="material-icons animated-icon">category</i>
+                </div>
+                <p>
+                    در ریاضیات، <strong>مجموعه</strong> به مجموعه‌ای از اشیاء مشخص و مجزا گفته می‌شود. این اشیاء می‌توانند هر چیزی باشند: اعداد، افراد، حروف، یا اشکال هندسی. اعضای یک مجموعه را درون آکولاد { } می‌نویسیم.
+                </p>
+                <div class="example">
+                    <p>مثال: مجموعه اعداد زوج کوچکتر از ۱۰</p>
+                    <code>A = {2, 4, 6, 8}</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- Types of Sets Section -->
+        <section id="types" class="content-section animate-on-scroll">
+            <h2 class="animate-heading">انواع مجموعه‌ها</h2>
+            <div class="cards-container">
+                <div class="type-card glass-card orange-glow-hover">
+                    <h3>مجموعه تهی (Empty Set)</h3>
+                    <p>مجموعه‌ای که هیچ عضوی ندارد و با نماد ∅ یا {} نمایش داده می‌شود.</p>
+                    <code>B = {}</code>
+                </div>
+                <div class="type-card glass-card yellow-glow-hover">
+                    <h3>مجموعه متناهی (Finite Set)</h3>
+                    <p>مجموعه‌ای که تعداد اعضای آن قابل شمارش است.</p>
+                    <code>C = {1, 2, 3, 4, 5}</code>
+                </div>
+                <div class="type-card glass-card orange-glow-hover">
+                    <h3>مجموعه نامتناهی (Infinite Set)</h3>
+                    <p>مجموعه‌ای که تعداد اعضای آن قابل شمارش نیست.</p>
+                    <code>D = {1, 2, 3, 4, ...}</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Venn Diagram Section -->
+        <section id="venn-diagram" class="content-section animate-on-scroll">
+            <h2 class="animate-heading">نمودار ون تعاملی</h2>
+            <p>دو مجموعه را وارد کنید تا اشتراک، اجتماع و تفاضل آن‌ها به صورت گرافیکی نمایش داده شود.</p>
+            <div class="venn-inputs glass-card">
+                <div class="input-group">
+                    <label for="setA-input">مجموعه A:</label>
+                    <input type="text" id="setA-input" placeholder="مثال: {1, 2, 3, 4}">
+                </div>
+                <div class="input-group">
+                    <label for="setB-input">مجموعه B:</label>
+                    <input type="text" id="setB-input" placeholder="مثال: {3, 4, 5, 6}">
+                </div>
+                <button id="calculate-venn-btn" class="cta-button">محاسبه کن</button>
+            </div>
+            <div class="venn-container glass-card">
+                <svg id="venn-svg" width="100%" height="400" viewBox="0 0 500 400">
+                    <defs>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <g id="circles-group">
+                        <circle cx="180" cy="200" r="100" fill="#ff6f00" fill-opacity="0.5" stroke="#ff6f00" stroke-width="3" filter="url(#glow)" class="venn-circle"/>
+                        <circle cx="320" cy="200" r="100" fill="#ffd600" fill-opacity="0.5" stroke="#ffd600" stroke-width="3" filter="url(#glow)" class="venn-circle"/>
+                    </g>
+                    <!-- Dynamic text elements will be inserted here by JS -->
+                    <g id="venn-labels"></g>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Interactive Exercise Section -->
+        <section id="exercise" class="content-section animate-on-scroll">
+            <h2 class="animate-heading">تمرین تعاملی</h2>
+            <div class="exercise-card glass-card">
+                <p id="question-text">سوال در حال بارگذاری...</p>
+                <div class="question-sets" id="question-sets">
+                    <!-- Sets will be dynamically inserted here -->
+                </div>
+                <div class="exercise-input-area">
+                    <input type="text" id="answer-input" placeholder="جواب خود را وارد کنید">
+                    <button id="check-answer-btn" class="cta-button">بررسی کن</button>
+                </div>
+                <p id="feedback-message"></p>
+                <button id="next-question-btn" class="cta-button" style="display:none; margin-top: 1rem;">سوال بعدی</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-footer">
+        <div class="footer-content">
+            <div class="like-container">
+                <button id="like-btn">
+                    <i class="material-icons animated-icon">favorite</i>
+                    <span>این سایت رو دوست داشتم</span>
+                </button>
+                <div class="like-counter">
+                    <i class="material-icons">favorite</i>
+                    <span id="like-count">0</span>
+                </div>
+            </div>
+            <p>&copy; 1403 | ساخته شده با عشق به ریاضی</p>
+        </div>
+    </footer>
+
+    <!-- Incorrect Answer Modal -->
+    <div id="incorrect-answer-modal" class="modal-overlay">
+        <div class="modal-content glass-card">
+            <h3><i class="material-icons" style="font-size: 2rem; vertical-align: middle; margin-left: 8px;">error_outline</i> پاسخ اشتباه</h3>
+            <p id="modal-explanation"></p>
+            <button id="modal-next-btn" class="cta-button">سوال بعدی</button>
+        </div>
+    </div>
+
+    <!-- JS File -->
+    <script src="script.js"></script>
+</body>
+</html>
